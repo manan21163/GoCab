@@ -65,7 +65,7 @@ CREATE TABLE payment(
 );
 
 INSERT INTO admin
-VALUE ("1", "Anmol", NULL, "Kaw",  "anmol21234@iiitd.ac.in", "anmoliiitd");
+VALUE ("1", "Manan", NULL, "garg",  "manan21163@iiitd.ac.in", "mananiiitd");
 
 
 
