@@ -401,13 +401,11 @@ Press 0 for Admin Login""")
 7. Query-7 : Details of vehicles whose brand name starts with letter 'm'
 8. OLAP-1 : Average Amount groupped by payment method.
 9. OLAP-2 : Trips where the fare is greater than or equal to the overall average fare for all trips groupped by rider_id
-10. OLAP-3 : CUBE OLAP query on trip table
-11. OLAP-4 : Roll Up OLAP query on vehicle table
-12. Logout from admin""")
+10. Logout from admin""")
                         
                         a = int(input("Select your query: "))
                         p = 0
-                        if a == 12:
+                        if a == 10:
                             break
                         elif a == 1:
                             cursor.execute("""SELECT AVG(fare)
@@ -466,45 +464,7 @@ GROUP BY method""")
 FROM trip
 WHERE trip.fare >= (SELECT AVG(fare) FROM trip)
 GROUP BY rider_id""")
-                            p = 1
-
-                        elif a == 10:
-                            cursor.execute("""SELECT
-pickup, droploc, COUNT(*) as total_rides, AVG(fare) as average_fare
-FROM trip
-GROUP BY pickup,droploc
-union all
-SELECT
-pickup, NULL,COUNT(*) as total_rides, AVG(fare) as average_fare
-FROM trip
-GROUP BY pickup
-union all
-SELECT
-NULL ,droploc ,COUNT(*) as total_rides, AVG(fare) as average_fare
-FROM trip
-GROUP BY droploc
-union all
-SELECT
-NULL, NULL, COUNT(*) as total_rides, AVG(fare) as average_fare
-FROM trip;""")
-                            p = 1
-
-                        elif a == 11:
-                            cursor.execute("""SELECT
-vehicletype, model, AVG(seatingcap) as sc, COUNT(*) as c
-FROM vehicle
-GROUP BY vehicletype ,model
-union all
-SELECT
-vehicletype, NULL, AVG(seatingcap) as sc, COUNT(*) as c
-FROM vehicle
-GROUP BY vehicletype
-union all
-SELECT
-NULL, NULL, AVG(seatingcap) as c, COUNT(*) as c
-FROM vehicle;""")
-                            p = 1
-                                        
+                            p = 1                   
 
             
                         else:
