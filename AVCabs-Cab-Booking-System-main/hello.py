@@ -173,7 +173,7 @@ try:
     connection = mysql.connector.connect(host='localhost',
                                          database='dead6_last',
                                          user='root',
-                                         password='vivek@123')
+                                         password='manan@123')
     if connection.is_connected():
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server")
